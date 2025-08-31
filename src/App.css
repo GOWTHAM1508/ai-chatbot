@@ -1,0 +1,264 @@
+/* App-specific styles */
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Custom scrollbar for the entire app */
+.App::-webkit-scrollbar {
+  width: 12px;
+}
+
+.App::-webkit-scrollbar-track {
+  background: var(--neutral-100);
+}
+
+.App::-webkit-scrollbar-thumb {
+  background: var(--neutral-300);
+  border-radius: 6px;
+}
+
+.App::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral-400);
+}
+
+/* Focus management for accessibility */
+.App:focus {
+  outline: none;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Chat container specific styles */
+.chat-container {
+  height: calc(100vh - 80px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Message animations */
+.message-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.message-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.message-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.message-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px;
+  background: var(--neutral-100);
+  border-radius: 18px;
+  width: fit-content;
+  margin: 8px 0;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neutral-400);
+  animation: typing-bounce 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+.typing-dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes typing-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Voice recording styles */
+.voice-recording {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--error);
+  color: white;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.voice-recording::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+/* File upload styles */
+.file-upload-zone {
+  border: 2px dashed var(--neutral-300);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.file-upload-zone:hover {
+  border-color: var(--primary-500);
+  background: var(--primary-50);
+}
+
+.file-upload-zone.dragover {
+  border-color: var(--primary-500);
+  background: var(--primary-100);
+  transform: scale(1.02);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+.high-contrast-mode {
+  --primary-500: #000000;
+  --primary-600: #000000;
+  --neutral-50: #ffffff;
+  --neutral-100: #ffffff;
+  --neutral-900: #000000;
+}
+
+/* Dyslexia-friendly mode */
+.dyslexia-mode {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+  line-height: 1.8 !important;
+  letter-spacing: 0.15em !important;
+  word-spacing: 0.2em !important;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .chat-container {
+    height: calc(100vh - 60px);
+  }
+  
+  .message-bubble {
+    max-width: 85%;
+  }
+  
+  .input-container {
+    padding: 12px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .chat-container {
+    height: auto;
+    overflow: visible;
+  }
+  
+  .message-bubble {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] .file-upload-zone {
+  border-color: var(--neutral-600);
+}
+
+[data-theme="dark"] .file-upload-zone:hover {
+  background: var(--neutral-800);
+}
+
+[data-theme="dark"] .typing-indicator {
+  background: var(--neutral-800);
+}
+
+/* Focus visible for keyboard navigation */
+.focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .typing-dot {
+    animation: none;
+  }
+  
+  .message-enter,
+  .message-enter-active,
+  .message-exit,
+  .message-exit-active {
+    transition: none;
+  }
+}
+

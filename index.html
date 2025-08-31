@@ -1,0 +1,79 @@
+cd client
+npm start<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="description" content="Next-Generation AI Chatbot - The most unique, human-centered, and intelligent conversational experience" />
+    <meta name="keywords" content="AI, chatbot, conversational, next-gen, unique, intelligent" />
+    <meta name="author" content="AI Chatbot Team" />
+    
+    <!-- Accessibility -->
+    <meta name="robots" content="index, follow" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Preload fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Dyslexia-friendly font -->
+    <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
+    
+    <title>Next-Gen AI Chatbot</title>
+    
+    <!-- PWA manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Apple touch icons -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- Loading fallback -->
+    <div id="loading-fallback" style="display: none;">
+      <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'Inter', sans-serif;">
+        <div style="text-align: center;">
+          <div style="width: 50px; height: 50px; border: 3px solid #e5e7eb; border-top: 3px solid #0ea5e9; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+          <p style="color: #6b7280; font-size: 16px;">Loading your AI companion...</p>
+        </div>
+      </div>
+    </div>
+    
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Dyslexia-friendly font fallback */
+      .dyslexia-friendly {
+        font-family: 'OpenDyslexic', Arial, sans-serif !important;
+        line-height: 1.6 !important;
+        letter-spacing: 0.1em !important;
+      }
+      
+      /* High contrast mode */
+      .high-contrast {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+      }
+      
+      .high-contrast * {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        border-color: #ffffff !important;
+      }
+    </style>
+  </body>
+</html>
+
